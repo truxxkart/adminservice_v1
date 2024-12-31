@@ -5,15 +5,14 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-public class OrderItem {
-    private String id;
-    private Orders order;
+public class CartItem {
+    private String cartItemId;
+    private Cart cart;
     private Long productId;
     private int quantity;
     private double price;
+    private double discount;
     private double totalPrice;
-    private double totalDiscountedPrice;         // quantity * price
-    private String status; // PENDING, CONFIRMED, SHIPPED, DELIVERED, CANCELLED
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }
