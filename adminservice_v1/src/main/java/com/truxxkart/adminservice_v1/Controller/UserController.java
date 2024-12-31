@@ -1,6 +1,6 @@
 package com.truxxkart.adminservice_v1.Controller;
 
-import com.truxxkart.adminservice_v1.dto.Userdto;
+import com.truxxkart.adminservice_v1.dto.User;
 import com.truxxkart.adminservice_v1.feignclient.userService.UserFeign;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,21 +12,22 @@ import java.util.List;
 import java.util.logging.Level;
 
 import static java.util.logging.Level.INFO;
+import static org.hibernate.internal.CoreLogging.logger;
 
 @Slf4j
 @RestController
-@RequestMapping
 public class UserController {
 
     @Autowired
     private UserFeign userFeign;
 
     @PostMapping("/createuser")
-    public ResponseEntity<Userdto> createUser(@RequestBody Userdto user){
+    public ResponseEntity<User> createUser(@RequestBody User user){
         log(INFO,"Calling the UserService");
+        logger("Calling the UserServicw_v1");
 //        log("Calling the UserSeervice");
 //        setLogLevel("Calling the UserService");
-        ResponseEntity<Userdto> createuser =userFeign.createUser(user);
+        ResponseEntity<User> createuser =userFeign.createUser(user);
         return ResponseEntity.status(HttpStatus.OK).body(createuser.getBody());
     }
 
@@ -34,15 +35,17 @@ public class UserController {
     }
 
     @GetMapping("/getusers")
-    public ResponseEntity<List<Userdto>> getAllUser(){
+    public ResponseEntity<List<User>> getAllUser(){
         log(INFO,"Calling the UserService");
-        ResponseEntity<List<Userdto>> allUsers = userFeign.getAllUser();
+        logger("Calling the UserServicw_v1");
+        ResponseEntity<List<User>> allUsers = userFeign.getAllUser();
         return allUsers;
     }
     @GetMapping("/getuser/{id}")
-    public ResponseEntity<Userdto> getUserById(@PathVariable Long id){
+    public ResponseEntity<User> getUserById(@PathVariable Long id){
         log(INFO,"Calling the UserService");
-        ResponseEntity<Userdto> getUser = userFeign.getUsersById(id);
+        logger("Calling the UserServicw_v1");
+        ResponseEntity<User> getUser = userFeign.getUsersById(id);
         return getUser;
     }
 

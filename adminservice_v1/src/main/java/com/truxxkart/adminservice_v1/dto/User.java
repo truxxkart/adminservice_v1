@@ -5,8 +5,9 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-public class Userdto
+public class User
 {
+
     private Long id;
     private String name;
     private String email;
@@ -18,4 +19,6 @@ public class Userdto
     private boolean isAvailable;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+
+
 }
